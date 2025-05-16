@@ -4,8 +4,8 @@ Kelompok 6
 Sistem Informasi Inventaris MAN 1
 
 List Anggota :
-Achmad Thandrie Erlangga 2271020068
-Aditya Virliano 2271020070
+Achmad Thandrie Erlangga 2271020068,
+Aditya Virliano 2271020070,
 Annisa Fazhira 
 
 note :
