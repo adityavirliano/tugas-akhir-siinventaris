@@ -1,9 +1,0 @@
-
-# Hapus file
-git rm nama_file
-
-# Commit perubahan
-git commit -m "Hapus nama_file"
-
-# Push ke GitHub
-git push
