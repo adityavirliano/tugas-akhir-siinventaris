@@ -262,15 +262,19 @@ if(isset($_POST['updatepeminjaman'])) {
 
     // Cek apakah status berubah menjadi 'Dikembalikan'
     if ($oldStatus != 'Dikembalikan' && $status == 'Dikembalikan') {
-        $tanggal_kembali = date('Y-m-d'); // Tanggal pengembalian otomatis
+        $tanggal_kembali = $data['tanggalpengembalian'];  // Tanggal pengembalian otomatis
 
         // Update data dan set tanggal pengembalian
-        mysqli_query($conn, "UPDATE peminjaman SET 
-            qty = '$qty',
-            peminjam = '$peminjam',
-            status = '$status',
-            tanggalpengembalian = '$tanggal_kembali'
-            WHERE idpeminjaman = '$idpeminjaman'");
+        if (isset($_POST['kembalikan'])) {
+    $idpeminjaman = $_POST['idpeminjaman'];
+    $tanggal_kembali = date('Y-m-d');
+
+    // Update status dan tanggalpengembalian
+    $update = mysqli_query($conn, "UPDATE peminjaman 
+        SET status = 'Dikembalikan', tanggalpengembalian = '$tanggal_kembali' 
+        WHERE idpeminjaman = '$idpeminjaman'");
+}
+
 
         // Kembalikan stok
         mysqli_query($conn, "UPDATE stock SET stock = stock + $oldQty WHERE idbarang='$idbarang'");
