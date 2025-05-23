@@ -252,34 +252,45 @@ if(isset($_POST['updatepeminjaman'])) {
     $qty = $_POST['qty'];
     $peminjam = $_POST['peminjam'];
     $status = $_POST['status'];
-    
+
     // Ambil data lama
     $queryOld = mysqli_query($conn, "SELECT * FROM peminjaman WHERE idpeminjaman='$idpeminjaman'");
     $oldData = mysqli_fetch_assoc($queryOld);
     $oldQty = $oldData['qty'];
     $oldStatus = $oldData['status'];
     $idbarang = $oldData['idbarang'];
-    
-    // Update data
-    mysqli_query($conn, "UPDATE peminjaman SET 
-        qty='$qty',
-        peminjam='$peminjam',
-        status='$status'
-        WHERE idpeminjaman='$idpeminjaman'");
-    
-    // Logika pengembalian stok
-    if($oldStatus == 'Dipinjam' && $status == 'Dikembalikan') {
-        // Kembalikan stok lama ke sistem
+
+    // Cek apakah status berubah menjadi 'Dikembalikan'
+    if ($oldStatus != 'Dikembalikan' && $status == 'Dikembalikan') {
+        $tanggal_kembali = date('Y-m-d'); // Tanggal pengembalian otomatis
+
+        // Update data dan set tanggal pengembalian
+        mysqli_query($conn, "UPDATE peminjaman SET 
+            qty = '$qty',
+            peminjam = '$peminjam',
+            status = '$status',
+            tanggalpengembalian = '$tanggal_kembali'
+            WHERE idpeminjaman = '$idpeminjaman'");
+
+        // Kembalikan stok
         mysqli_query($conn, "UPDATE stock SET stock = stock + $oldQty WHERE idbarang='$idbarang'");
-    } elseif($oldStatus == 'Dikembalikan' && $status == 'Dipinjam') {
-        // Kurangi stok dengan jumlah baru
-        mysqli_query($conn, "UPDATE stock SET stock = stock - $qty WHERE idbarang='$idbarang'");
-    } elseif($status == 'Dipinjam' && $oldQty != $qty) {
-        // Hitung selisih dan update stok
-        $selisih = $oldQty - $qty;
-        mysqli_query($conn, "UPDATE stock SET stock = stock + $selisih WHERE idbarang='$idbarang'");
+    } else {
+        // Jika status tidak berubah ke 'Dikembalikan', hanya update data biasa
+        mysqli_query($conn, "UPDATE peminjaman SET 
+            qty = '$qty',
+            peminjam = '$peminjam',
+            status = '$status'
+            WHERE idpeminjaman = '$idpeminjaman'");
+
+        // Logika penyesuaian stok
+        if($oldStatus == 'Dikembalikan' && $status == 'Dipinjam') {
+            mysqli_query($conn, "UPDATE stock SET stock = stock - $qty WHERE idbarang='$idbarang'");
+        } elseif($status == 'Dipinjam' && $oldQty != $qty) {
+            $selisih = $oldQty - $qty;
+            mysqli_query($conn, "UPDATE stock SET stock = stock + $selisih WHERE idbarang='$idbarang'");
+        }
     }
-    
+
     header('location:peminjaman.php');
 }
 
