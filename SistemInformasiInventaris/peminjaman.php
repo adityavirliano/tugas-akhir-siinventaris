@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Jakarta');
 require 'function.php';
 require 'cek.php';
 ?>
@@ -214,7 +215,7 @@ require 'cek.php';
                                         $namabarang = $data['namabarang'];
                                         $qty = $data['qty'];
                                         $peminjam = $data['peminjam'];
-                                        $tanggal_kembali = date('Y-m-d');
+                                        $tanggal_kembali = $data['tanggalpengembalian'];
                                         $status = $data['status'];
                                     ?>
                                         <tr>
@@ -222,8 +223,13 @@ require 'cek.php';
                                             <td><?= $namabarang ?></td>
                                             <td><?= $qty ?></td>
                                             <td><?= $peminjam ?></td>
-                                            <td><?= $tanggal_kembali ?></td>
-                                            <td><?= $status == 'Dikembalikan' ? $tanggal_kembali : 'Belum dikembalikan';  ?></td>
+                                            <td>
+    <?= ($status == 'Dikembalikan' && !empty($tanggal_kembali)) ? date('d M Y', strtotime($tanggal_kembali)) : '' ?>
+</td>
+<td>
+    <?= ($status == 'Dikembalikan') ? 'Dikembalikan' : 'Belum dikembalikan' ?>
+</td>
+
                                             <td>
                                                 <div class="d-flex justify-content-center gap-2">
                                                     <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?= $idpeminjaman ?>">Edit</button>
