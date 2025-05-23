@@ -344,6 +344,8 @@ require 'cek.php';
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
+
+            
             <!-- Modal body -->
             <form method="post">
                 <div class="modal-body">
