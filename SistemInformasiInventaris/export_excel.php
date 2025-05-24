@@ -19,7 +19,7 @@ $tglHariIni = date('d-m-Y');
             <tr>
                 <th>No</th>
                 <th>Nama Barang</th>
-                <th>Deskripsi</th>
+                <th>Kategori</th>
                 <th>Stok</th>
             </tr>
         </thead>
@@ -32,7 +32,7 @@ $tglHariIni = date('d-m-Y');
                 <tr>
                     <td>'.$no++.'</td>
                     <td>'.$row['namabarang'].'</td>
-                    <td>'.$row['deskripsi'].'</td>
+                    <td>'.$row['kategori'].'</td>
                     <td>'.$row['stock'].'</td>
                 </tr>';
             }
