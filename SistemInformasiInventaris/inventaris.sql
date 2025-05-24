@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2025 at 04:38 AM
+-- Generation Time: May 24, 2025 at 05:34 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -123,7 +123,7 @@ INSERT INTO `peminjaman` (`idpeminjaman`, `idbarang`, `tanggalpinjam`, `qty`, `p
 CREATE TABLE `stock` (
   `idbarang` int(11) NOT NULL,
   `namabarang` varchar(25) NOT NULL,
-  `deskripsi` varchar(25) NOT NULL,
+  `kategori` varchar(100) NOT NULL,
   `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -131,9 +131,9 @@ CREATE TABLE `stock` (
 -- Dumping data for table `stock`
 --
 
-INSERT INTO `stock` (`idbarang`, `namabarang`, `deskripsi`, `stock`) VALUES
-(11, 'Pulpen', 'ATK', 180),
-(12, 'Pensil', 'ATK', 55),
+INSERT INTO `stock` (`idbarang`, `namabarang`, `kategori`, `stock`) VALUES
+(11, 'Pulpen', 'Alat Tulis Kantor', 180),
+(12, 'Pensil', 'Alat Tulis Kantor', 55),
 (13, 'Penghapus', 'ATK', 100),
 (14, 'Penggaris 30cm', 'ATK', 80),
 (15, 'Spidol Snowman', 'ATK', 220),
