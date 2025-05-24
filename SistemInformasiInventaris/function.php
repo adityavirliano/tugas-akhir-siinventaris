@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -7,11 +8,11 @@ $conn = mysqli_connect("localhost", "root", "", "inventaris");
 
 if (isset($_POST['addnewbarang'])) {
     $namabarang = $_POST['namabarang'];
-    $deskripsi = $_POST['deskripsi'];
+    $kategori = $_POST['kategori'];
     $stock = $_POST['stock'];
     $qty = $_POST['qty'];
 
-    $addtotable = mysqli_query($conn, "insert into stock (namabarang, deskripsi, stock) values('$namabarang','$deskripsi','$stock')");
+    $addtotable = mysqli_query($conn, "insert into stock (namabarang, kategori, stock) values('$namabarang','$kategori','$stock')");
     if ($addtotable) {
         header('location:stock.php');
     } else {
@@ -83,10 +84,10 @@ if (isset($_POST['addbarangkeluar'])) {
 if (isset($_POST['updatebarang'])) {
     $idbarang = $_POST['idbarang'];
     $namabarang = $_POST['namabarang'];
-    $deskripsi = $_POST['deskripsi'];
+    $kategori = $_POST['kategori'];
     $stock = $_POST['stock'];
 
-    $update = mysqli_query($conn, "UPDATE stock SET namabarang='$namabarang', deskripsi='$deskripsi', stock='$stock' WHERE idbarang='$idbarang'");
+    $update = mysqli_query($conn, "UPDATE stock SET namabarang='$namabarang', kategori='$kategori', stock='$stock' WHERE idbarang='$idbarang'");
 }
 
 // Hapus barang
