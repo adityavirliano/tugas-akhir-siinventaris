@@ -365,7 +365,7 @@ $colorss = ['#36a2eb', '#4bc0c0', '#ff6384', '#ffcd56'];
                                     <tr>
                                         <th>No.</th>
                                         <th>Nama Barang</th>
-                                        <th>Deskripsi</th>
+                                        <th>Kategori</th>
                                         <th>Stock</th>
                                     </tr>
                                 </thead>
@@ -375,14 +375,14 @@ $colorss = ['#36a2eb', '#4bc0c0', '#ff6384', '#ffcd56'];
                                     $i = 1;
                                     while ($data = mysqli_fetch_array($ambilsemuadatastock)) {
                                         $namabarang = $data['namabarang'];
-                                        $deskripsi = $data['deskripsi'];
+                                        $kategori = $data['kategori'];
                                         $stock = $data['stock'];
                                         $idbarang = $data['idbarang'];
                                     ?>
                                         <tr>
                                             <td><?= $i++; ?></td>
                                             <td><?= $namabarang; ?></td>
-                                            <td><?= $deskripsi; ?></td>
+                                            <td><?= $kategori; ?></td>
                                             <td><?= $stock; ?></td>
                                         </tr>
                                     <?php
