@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2025 at 03:52 PM
+-- Generation Time: May 24, 2025 at 04:38 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -100,6 +100,7 @@ CREATE TABLE `peminjaman` (
   `tanggalpinjam` timestamp NOT NULL DEFAULT current_timestamp(),
   `qty` int(11) NOT NULL,
   `peminjam` varchar(25) NOT NULL,
+  `tanggalpengembalian` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` varchar(25) NOT NULL DEFAULT 'Dipinjam'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -107,9 +108,11 @@ CREATE TABLE `peminjaman` (
 -- Dumping data for table `peminjaman`
 --
 
-INSERT INTO `peminjaman` (`idpeminjaman`, `idbarang`, `tanggalpinjam`, `qty`, `peminjam`, `status`) VALUES
-(2, 11, '2025-05-04 19:08:12', 30, 'udin', 'Dikembalikan'),
-(3, 15, '2025-05-04 19:13:38', 10, 'ferdi', 'Dipinjam');
+INSERT INTO `peminjaman` (`idpeminjaman`, `idbarang`, `tanggalpinjam`, `qty`, `peminjam`, `tanggalpengembalian`, `status`) VALUES
+(3, 15, '2025-05-04 19:13:38', 10, 'ferdi', '2025-05-23 17:00:00', 'Dikembalikan'),
+(4, 18, '2025-05-23 18:18:02', 2, 'Mail', '2025-05-23 17:00:00', 'Dikembalikan'),
+(5, 17, '2025-05-23 18:34:22', 10, 'Mail', '2025-05-22 17:00:00', 'Dikembalikan'),
+(7, 12, '2025-05-23 19:02:35', 5, 'budi', '2025-05-22 17:00:00', 'Dikembalikan');
 
 -- --------------------------------------------------------
 
@@ -133,10 +136,12 @@ INSERT INTO `stock` (`idbarang`, `namabarang`, `deskripsi`, `stock`) VALUES
 (12, 'Pensil', 'ATK', 55),
 (13, 'Penghapus', 'ATK', 100),
 (14, 'Penggaris 30cm', 'ATK', 80),
-(15, 'Spidol Snowman', 'ATK', 210),
+(15, 'Spidol Snowman', 'ATK', 220),
 (16, 'Buku Tulis', 'ATK', 0),
 (17, 'Kertas HVS A4', 'ATK', 400),
-(18, 'Stabillo', 'ATK', 550);
+(18, 'Stabillo', 'ATK', 550),
+(22, 'Larutan Indikator', 'Bahan Praktikum', 20),
+(23, 'penghapus', 'ATK', 15);
 
 --
 -- Indexes for dumped tables
@@ -198,13 +203,13 @@ ALTER TABLE `masuk`
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `idpeminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idpeminjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
