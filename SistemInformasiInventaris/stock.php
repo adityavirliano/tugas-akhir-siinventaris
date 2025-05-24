@@ -65,27 +65,13 @@ require 'cek.php';
     }
 
     /* Cards */
-    .card {
-        background: white;
-        /* Tambahkan ini */
-        border: none;
-        border-radius: 15px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-        transition: transform 0.3s ease;
-        overflow: hidden;
-    }
 
-    .card:hover {
-        transform: translateY(-5px);
-    }
-
-    .card-header {
+  .card-header {
         background: linear-gradient(45deg, var(--primary), var(--secondary));
         color: white;
         border-radius: 15px 15px 0 0 !important;
         padding: 1.5rem;
     }
-
 
 
     /* Chart Containers */
