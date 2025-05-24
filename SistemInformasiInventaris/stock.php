@@ -379,7 +379,7 @@ require 'cek.php';
                             <option value="Perlengkapan Kesehatan">Perlengkapan Kesehatan</option>
                             <option value="Bahan Cetak dan Publikasi">Bahan Cetak dan Publikasi</option>
                         </select>
-                    <br>
+                        <br>
                     <input type="number" name="stock" placeholder="Stock" class="form-control" required>
                     <br>
                     <button type="submit" class="btn btn-primary" name="addnewbarang">Submit</button>
