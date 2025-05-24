@@ -1,3 +1,4 @@
+
 <?php
 
 require 'function.php';
@@ -197,6 +198,23 @@ require 'cek.php';
                             </div>
                         </div>
                         <div class="card-body">
+                            <form method="GET" action="">
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <select name="kategori" class="form-select" onchange="this.form.submit()">
+                <option value="">-- Semua Kategori --</option>
+                <?php
+                $kategori = mysqli_query($conn, "SELECT DISTINCT kategori FROM stock");
+                while ($k = mysqli_fetch_array($kategori)) {
+                    $selected = (isset($_GET['kategori']) && $_GET['kategori'] == $k['kategori']) ? 'selected' : '';
+                    echo "<option value='" . $k['kategori'] . "' $selected>" . $k['kategori'] . "</option>";
+                }
+                ?>
+            </select>
+        </div>
+    </div>
+</form>
+
 
                             <?php
                             $ambildatastock = mysqli_query($conn, 'select * from stock where stock < 1');
@@ -218,25 +236,31 @@ require 'cek.php';
                                     <tr>
                                         <th>No.</th>
                                         <th>Nama Barang</th>
-                                        <th>Deskripsi</th>
+                                        <th>Kategori</th>
                                         <th>Stock</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center align-middle">
                                     <?php
-                                    $ambilsemuadatastock = mysqli_query($conn, 'SELECT * FROM stock');
+                                    if (isset($_GET['kategori']) && $_GET['kategori'] != '') {
+    $filter = $_GET['kategori'];
+    $ambilsemuadatastock = mysqli_query($conn, "SELECT * FROM stock WHERE kategori='$filter'");
+} else {
+    $ambilsemuadatastock = mysqli_query($conn, "SELECT * FROM stock");
+}
+
                                     $i = 1;
                                     while ($data = mysqli_fetch_array($ambilsemuadatastock)) {
                                         $namabarang = $data['namabarang'];
-                                        $deskripsi = $data['deskripsi'];
+                                        $kategori = $data['kategori'];
                                         $stock = $data['stock'];
                                         $idbarang = $data['idbarang'];
                                     ?>
                                         <tr>
                                             <td><?= $i++; ?></td>
                                             <td><?= $namabarang; ?></td>
-                                            <td><?= $deskripsi; ?></td>
+                                            <td><?= $kategori; ?></td>
                                             <td><?= $stock; ?></td>
                                             <td>
                                                 <div class="d-flex justify-content-center gap-2">
@@ -257,7 +281,16 @@ require 'cek.php';
                                                         </div>
                                                         <div class="modal-body">
                                                             <input type="text" name="namabarang" value="<?= $namabarang; ?>" class="form-control mb-2" required>
-                                                            <input type="text" name="deskripsi" value="<?= $deskripsi; ?>" class="form-control mb-2" required>
+                                                        
+    <select name="kategori" class="form-select mb-2" required>
+    <option value="">-- Pilih Kategori --</option>
+    <option value="Alat Tulis Kantor">Alat Tulis Kantor</option>
+    <option value="Perlengkapan Kelas">Perlengkapan Kelas</option>
+    <option value="Bahan Praktikum">Bahan Praktikum</option>
+    <option value="Peralatan Kebersihan">Peralatan Kebersihan</option>
+    <option value="Perlengkapan Kesehatan">Perlengkapan Kesehatan</option>
+    <option value="Bahan Cetak dan Publikasi">Bahan Cetak dan Publikasi</option>
+</select>
                                                             <input type="number" name="stock" value="<?= $stock; ?>" class="form-control mb-2" required>
                                                             <input type="hidden" name="idbarang" value="<?= $idbarang; ?>">
                                                         </div>
@@ -337,8 +370,15 @@ require 'cek.php';
                 <div class="modal-body">
                     <input type="text" name="namabarang" placeholder="Nama Barang" class="form-control" required>
                     <br>
-                    <input type="text" name="deskripsi" placeholder="Deskripsi Barang" class="form-control" required>
-                    <br>
+                    <select name="kategori" class="form-select mb-2" required>
+                            <option value="">-- Pilih Kategori --</option>
+                            <option value="Alat Tulis Kantor">Alat Tulis Kantor</option>
+                            <option value="Perlengkapan Kelas">Perlengkapan Kelas</option>
+                            <option value="Bahan Praktikum">Bahan Praktikum</option>
+                            <option value="Peralatan Kebersihan">Peralatan Kebersihan</option>
+                            <option value="Perlengkapan Kesehatan">Perlengkapan Kesehatan</option>
+                            <option value="Bahan Cetak dan Publikasi">Bahan Cetak dan Publikasi</option>
+                        </select>
                     <input type="number" name="stock" placeholder="Stock" class="form-control" required>
                     <br>
                     <button type="submit" class="btn btn-primary" name="addnewbarang">Submit</button>
