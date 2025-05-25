@@ -168,13 +168,17 @@ require 'cek.php';
                             <div class="sb-nav-link-icon"><i class="fas fa-hand-holding"></i></div>
                             Peminjaman Barang
                         </a>
-                        <a class="nav-link" href="admin.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
-                            Kelola Admin
-                        </a>
+                        <?php if ($role == 'admin') { ?>
+                            <div class="sb-sidenav-menu-heading">ADMIN</div> <a class="nav-link" href="admin.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
+                                Kelola Admin
+                            </a>
+                        <?php } ?>
                     </div>
                 </div>
-                <!-- Tombol logout di bawah -->
+                <div class="small" style="color: rgba(255, 255, 255, 0.5); padding: 0.5rem 1.5rem;">
+                    Logged as: <strong><?php echo ucfirst($role); ?></strong>
+                </div>
                 <div class="sb-sidenav-footer">
                     <a class="nav-link" href="logout.php">
                         <i class="fas fa-sign-out-alt"></i> Log Out
