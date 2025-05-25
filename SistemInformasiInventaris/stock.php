@@ -15,7 +15,7 @@ require 'cek.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Stock Barang - Sistem Informasi Inventaris</title>
+    <title>Stock Barang - Sistem Informasi Inventaris MAN 1</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
@@ -138,7 +138,7 @@ require 'cek.php';
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.php">Sistem Informasi Inventaris</a>
+        <a class="navbar-brand ps-3" href="index.php">Sistem Informasi Inventaris MAN 1</a>
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
@@ -332,7 +332,7 @@ require 'cek.php';
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Sistem Informasi Inventaris</div>
+                        <div class="text-muted">Copyright &copy; Sistem Informasi Inventaris MAN 1</div>
                         <div>
                             <a href="#">Privacy Policy</a>
                             &middot;
