@@ -10,5 +10,11 @@ Annisa Fazhira 2271020081
 
 note :
 Untuk login diharuskan memakai akun yang terdaftar di database inventaris.sql (untuk db inventaris.sql sudah saya taruh di dalam folder)
+
+Role Admin
 email : admin@gmail.com
+password : 12345
+
+Role Petugas
+email : petugas@gmail.com
 password : 12345
