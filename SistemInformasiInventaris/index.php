@@ -217,11 +217,16 @@ $colorss = ['#36a2eb', '#4bc0c0', '#ff6384', '#ffcd56'];
                             <div class="sb-nav-link-icon"><i class="fas fa-hand-holding"></i></div>
                             Peminjaman Barang
                         </a>
-                        <a class="nav-link" href="admin.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
-                            Kelola Admin
-                        </a>
+                        <?php if ($role == 'admin') { ?>
+                            <div class="sb-sidenav-menu-heading">ADMIN</div> <a class="nav-link" href="admin.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
+                                Kelola Admin
+                            </a>
+                        <?php } ?>
                     </div>
+                </div>
+                <div class="small" style="color: rgba(255, 255, 255, 0.5); padding: 0.5rem 1.5rem;">
+                    Logged as: <strong><?php echo ucfirst($role); ?></strong>
                 </div>
                 <div class="sb-sidenav-footer">
                     <a class="nav-link" href="logout.php">
