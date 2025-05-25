@@ -1,8 +1,18 @@
-
 <?php
 
 require 'function.php';
 require 'cek.php';
+
+// Cek apakah pengguna memiliki peran admin
+if ($role != 'admin') { // Menggunakan variabel $role dari cek.php
+    echo '
+        <script>
+            alert("Anda tidak memiliki akses ke halaman ini!");
+            window.location.href="index.php"; // Redirect ke halaman utama atau halaman lain
+        </script>
+    ';
+    exit(); // Hentikan eksekusi script
+}
 
 ?>
 
@@ -169,13 +179,17 @@ require 'cek.php';
                             <div class="sb-nav-link-icon"><i class="fas fa-hand-holding"></i></div>
                             Peminjaman Barang
                         </a>
-                        <a class="nav-link active" href="admin.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
-                            Kelola Admin
-                        </a>
+                        <?php if ($role == 'admin') { ?>
+                            <div class="sb-sidenav-menu-heading">ADMIN</div> <a class="nav-link active" href="admin.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
+                                Kelola Admin
+                            </a>
+                        <?php } ?>
                     </div>
                 </div>
-                <!-- Tombol logout di bawah -->
+                <div class="small" style="color: rgba(255, 255, 255, 0.5); padding: 0.5rem 1.5rem;">
+                    Logged as: <strong><?php echo ucfirst($role); ?></strong>
+                </div>
                 <div class="sb-sidenav-footer">
                     <a class="nav-link" href="logout.php">
                         <i class="fas fa-sign-out-alt"></i> Log Out
@@ -305,7 +319,6 @@ require 'cek.php';
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
-            
             <!-- Modal body -->
             <form method="post">
                 <div class="modal-body">
