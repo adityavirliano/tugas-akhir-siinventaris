@@ -11,7 +11,9 @@ if (isset($_POST['login'])) {
     $hitung = mysqli_num_rows($cekdatabase);
 
     if ($hitung > 0) {
+        $data_user = mysqli_fetch_array($cekdatabase);
         $_SESSION['log'] = 'true';
+        $_SESSION['role'] = $data_user['role']; // Simpan peran pengguna di sesi
         header('location:index.php');
     } else {
         header('location:login.php');
@@ -55,7 +57,8 @@ if (!isset($_SESSION['log'])) {
 
     body::before {
         content: "";
-        background: rgba(0, 0, 0, 0.5); /* overlay gelap */
+        background: rgba(0, 0, 0, 0.5);
+        /* overlay gelap */
         position: fixed;
         top: 0;
         left: 0;
