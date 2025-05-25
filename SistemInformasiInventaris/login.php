@@ -34,7 +34,7 @@ if (!isset($_SESSION['log'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Login - Sistem Informasi Inventaris</title>
+    <title>Login - Sistem Informasi Inventaris MAN 1</title>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
@@ -104,7 +104,7 @@ if (!isset($_SESSION['log'])) {
         <div class="logo-container">
             <img src="assets/img/logoman.png" alt="Logo MAN 1">
         </div>
-        <div class="login-heading">Sistem Informasi Inventaris</div>
+        <div class="login-heading">Sistem Informasi Inventaris MAN 1</div>
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
