@@ -164,11 +164,16 @@ require 'cek.php';
                             <div class="sb-nav-link-icon"><i class="fas fa-hand-holding"></i></div>
                             Peminjaman Barang
                         </a>
-                        <a class="nav-link" href="admin.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
-                            Kelola Admin
-                        </a>
+                        <?php if ($role == 'admin') { ?>
+                            <div class="sb-sidenav-menu-heading">ADMIN</div> <a class="nav-link" href="admin.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
+                                Kelola Admin
+                            </a>
+                        <?php } ?>
                     </div>
+                </div>
+                <div class="small" style="color: rgba(255, 255, 255, 0.5); padding: 0.5rem 1.5rem;">
+                    Logged as: <strong><?php echo ucfirst($role); ?></strong>
                 </div>
                 <div class="sb-sidenav-footer">
                     <a class="nav-link" href="logout.php">
@@ -224,22 +229,22 @@ require 'cek.php';
                                             <td><?= $qty ?></td>
                                             <td><?= $peminjam ?></td>
                                             <td>
-    <?= ($status == 'Dikembalikan' && !empty($tanggal_kembali)) ? date('d M Y', strtotime($tanggal_kembali)) : '' ?>
-</td>
-<td>
-    <?= ($status == 'Dikembalikan') ? 'Dikembalikan' : 'Belum dikembalikan' ?>
-</td>
+                                                <?= ($status == 'Dikembalikan' && !empty($tanggal_kembali)) ? date('d M Y', strtotime($tanggal_kembali)) : '' ?>
+                                            </td>
+                                            <td>
+                                                <?= ($status == 'Dikembalikan') ? 'Dikembalikan' : 'Belum dikembalikan' ?>
+                                            </td>
 
                                             <td>
                                                 <div class="d-flex justify-content-center gap-2">
                                                     <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?= $idpeminjaman ?>">Edit</button>
                                                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete<?= $idpeminjaman ?>">Hapus</button>
                                                     <?php if ($status == 'Dipinjam') { ?>
-    <form method="post" style="display:inline;">
-        <input type="hidden" name="idpeminjaman" value="<?= $idpeminjaman ?>">
-        <button type="submit" name="kembalikan" class="btn btn-success btn-sm">Kembalikan</button>
-    </form>
-<?php } ?>
+                                                        <form method="post" style="display:inline;">
+                                                            <input type="hidden" name="idpeminjaman" value="<?= $idpeminjaman ?>">
+                                                            <button type="submit" name="kembalikan" class="btn btn-success btn-sm">Kembalikan</button>
+                                                        </form>
+                                                    <?php } ?>
                                                 </div>
                                             </td>
                                         </tr>
@@ -269,7 +274,7 @@ require 'cek.php';
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
 
                                         <!-- Modal Hapus -->
                                         <div class="modal fade" id="delete<?= $idpeminjaman ?>">
