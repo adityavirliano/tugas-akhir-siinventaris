@@ -1,6 +1,6 @@
 Tugas Akhir Kelas VI B
 
-Kelompok 6
+Kelompok 5
 Sistem Informasi Inventaris MAN 1
 
 List Anggota :
